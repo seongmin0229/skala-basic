@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변환과 전환 효과 예시</title>
+    <style>
+        /* 기본 레이아웃 설정 */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* 1. 상단 라운드 div 박스 스타일 */
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: #6da05a; /* 기본 녹색 */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px; /* 곡선 처리 */
+            font-weight: bold;
+            margin-bottom: 40px;
+            cursor: pointer;
+            
+            /* 전환 효과(Transition) 설정: 배경색과 변형에 0.5초 부여 */
+            transition: background-color 0.5s ease, transform 0.5s ease;
+        }
+
+        /* 2. 호버 시 배경색 변경 (녹색 -> 노란색) */
+        .box:hover {
+            background-color: #f1c40f; /* 노란색 계열 */
+        }
+
+        /* 3. 버튼 클릭 시 추가될 회전 클래스 */
+        .rotated {
+            transform: rotate(45deg) scale(1.2);
+        }
+
+        /* 하단 버튼 스타일 */
+        .click-btn {
+            padding: 10px 25px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .click-btn:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Transform and Transition Example</h1>
+
+    <div id="targetBox" class="box">
+        Hover me!
+    </div>
+
+    <button class="click-btn" onclick="toggleRotate()">Click Me!</button>
+
+    <script>
+        // 버튼 클릭 시 호출되는 함수
+        function toggleRotate() {
+            const box = document.getElementById('targetBox');
+            // 'rotated' 클래스가 있으면 제거하고, 없으면 추가함 (토글)
+            box.classList.toggle('rotated');
+        }
+    </script>
+
+</body>
+</html>

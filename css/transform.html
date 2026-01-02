@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Transform 제어 예제</title>
+    <style>
+        /* 1. 기본 레이아웃 설정 */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+            font-family: 'Malgun Gothic', sans-serif;
+        }
+
+        /* 버튼 그룹 스타일 */
+        .button-group {
+            margin-bottom: 50px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #2c3e50;
+            color: white;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background-color: #34495e;
+        }
+
+        button.reset {
+            background-color: #e74c3c;
+        }
+
+        /* 2. 대상 박스 스타일 */
+        .stage {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ccc; /* 박스 이동 범위를 보기 위한 가이드 라인 */
+            background-color: #fff;
+        }
+
+        #targetBox {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 부드럽고 튕기는 효과 */
+        }
+
+        /* 3. Transform 효과 클래스들 */
+        .effect-translate { transform: translate(50px, -50px); }
+        .effect-scale     { transform: scale(1.5); }
+        .effect-rotate    { transform: rotate(180deg); }
+        .effect-skew      { transform: skewX(30deg); }
+        .effect-complex   { transform: rotate(360deg) scale(0.5) translate(20px, 20px); }
+
+    </style>
+</head>
+<body>
+
+    <div class="button-group">
+        <button onclick="applyEffect('translate')">Translate (이동)</button>
+        <button onclick="applyEffect('scale')">Scale (확대)</button>
+        <button onclick="applyEffect('rotate')">Rotate (회전)</button>
+        <button onclick="applyEffect('skew')">Skew (기울기)</button>
+        <button onclick="applyEffect('complex')">Complex (복합)</button>
+        <button class="reset" onclick="applyEffect('')">Reset (초기화)</button>
+    </div>
+
+    <div class="stage">
+        <div id="targetBox">Target</div>
+    </div>
+
+    <script>
+        function applyEffect(effectName) {
+            const box = document.getElementById('targetBox');
+            
+            // 1. 기존에 적용된 모든 효과 클래스 제거
+            box.classList.remove(
+                'effect-translate', 
+                'effect-scale', 
+                'effect-rotate', 
+                'effect-skew', 
+                'effect-complex'
+            );
+
+            // 2. 선택한 효과가 있다면 클래스 추가
+            if (effectName !== '') {
+                box.classList.add('effect-' + effectName);
+                box.innerText = effectName.toUpperCase();
+            } else {
+                box.innerText = "Target";
+            }
+        }
+    </script>
+
+</body>
+</html>
