@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function getFormattedDateTime(date = new Date()) {
+        const year = date.getFullYear();
+        // getMonth()는 0부터 시작하므로 1을 더해줍니다.
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+
+        const hours = String(date.getHours()).padStart(2, "0");
+        const minutes = String(date.getMinutes()).padStart(2, "0");
+        const seconds = String(date.getSeconds()).padStart(2, "0");
+
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+      }
+
+      // 실행 결과 확인
+      console.log(getFormattedDateTime());
+      // 출력 예시: "2026-01-05 13:45:07"
+
+      const now = new Date();
+      console.log(now.toLocaleDateString());
+
+      console.log(now.toISOString());
+
+      // epoch 시간
+      const dayAfter30 = now.getTime() + 30 * 24 * 60 * 60 * 1000;
+
+      console.log(getFormattedDateTime(new Date(dayAfter30)));
+    </script>
+  </body>
+</html>

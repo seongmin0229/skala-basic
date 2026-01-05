@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>식량 분배</title>
+  </head>
+  <body>
+    <script>
+      const foods = [
+        "쌀",
+        "보리",
+        "콩",
+        "감자",
+        "양파",
+        "마늘",
+        "배추",
+        "무",
+        "고구마",
+        "호박",
+      ];
+
+      const poors = ["철수", "영희", "민수"];
+
+      const results = poors.map((name) => ({
+        name: name,
+        items: [],
+      }));
+
+      foods.forEach((food, index) => {
+        const targetIndex = index % poors.length;
+        results[targetIndex].items.push(food);
+      });
+
+      document.write("<table border='1'><tr><th>이름</th><th>식량</th></tr>");
+      results.forEach((result) => {
+        document.write(
+          `<tr><td>${result.name}</td><td>${result.items.join(", ")}</td></tr>`
+        );
+      });
+    </script>
+  </body>
+</html>

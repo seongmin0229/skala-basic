@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>홍길동의 변신</title>
+  </head>
+  <body>
+    <script>
+      const transform = (str) => {
+        if (str == "") {
+          document.write("<h1>연기처럼 사라졌습니다.</h1>");
+        } else {
+          document.write(`<h1>홍길동 변신! - ${str}</h1>`);
+        }
+      };
+      const input = prompt("입력: ");
+
+      transform(input);
+    </script>
+  </body>
+</html>

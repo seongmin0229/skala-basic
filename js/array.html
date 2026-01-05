@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>배열</title>
+  </head>
+  <body>
+    <script>
+      const originals = ["사과", "바나나", "오렌지"];
+      const copiedArray = [...originals];
+
+      copiedArray.length = 0;
+      
+      console.log("원본 배열:", originals);
+      console.log("복사된 배열:", copiedArray);
+
+      const arr = [];
+      arr[0] = "첫 번째 요소";
+      arr[4] = "다섯 번째 요소";
+
+      console.log("배열:", arr);
+
+      console.log("배열 길이:", arr.length);
+
+      for (let i = 0; i < arr.length; i++) {
+        console.log(`arr[${i}]:`, arr[i]);
+      }
+
+      for (const item of arr) {
+        console.log("배열 요소:", item);
+      }
+
+      // 원하는 값을 직접 입력하여 초기화
+      const array = [
+        [0, 1, 2, 3],
+        [4, 5, 6, 7],
+        [8, 9, 10, 11],
+      ];
+      console.table(array);
+    </script>
+  </body>
+</html>
